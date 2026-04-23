@@ -7,10 +7,13 @@ addpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses/general_scripts_m
 ft_defaults
 settings                    = [];
 settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
-settings.subject            = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
-settings.SubjectIDs         = char('s01_CF', 's02_JM', 's03_SO', 's06_AH','s07_FC', 's08_HW', 's09_AM', 's10_MH','s11_FS', 's12_AS', 's13_CB', 's14_KK');
 settings.data_dir           = [settings.base_path_castle,'subjects/'];
 settings.save_dir           = [settings.base_path_castle,'preprocessing/channel_removal_all_channels/'];
+
+
+settings.subject            = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
+settings.SubjectIDs         = char('s01_CF', 's02_JM', 's03_SO', 's06_AH','s07_FC', 's08_HW', 's09_AM', 's10_MH','s11_FS', 's12_AS', 's13_CB', 's14_KK');
+
 
 % filter settings
 settings.lpfreq         = 250;

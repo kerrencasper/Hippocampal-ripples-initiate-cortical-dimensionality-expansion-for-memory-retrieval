@@ -3,15 +3,21 @@
 clear
 
 %% path settings
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
-settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
-settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW','09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle = paths.base_path;
+
 
 
 settings.data_dir           = [settings.base_path_castle,'output_data/ripple_detection/'];
 settings.data_dir_arti      = [settings.base_path_castle,'preprocessing/artifact_rejected_data/'];
 settings.save_dir           = [settings.base_path_castle,'output_data/realigned_data/'];
+
+settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
+settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW','09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
+
+
 
 mean_all = [];
 for isubject = 1:size(settings.subjects,1)

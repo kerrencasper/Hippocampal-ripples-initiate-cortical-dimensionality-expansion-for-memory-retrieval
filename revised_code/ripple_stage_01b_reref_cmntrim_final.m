@@ -1,18 +1,29 @@
 %% re-reference based on common mean
 %                  Casper Kerren      [kerren@cbs.mpg.de]
-clear
+
 %% stage 1: focus on HIPP contacts and do common (trimmed) average rereferencing
 
+clear
 addpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/fieldtrip-20230422')
 ft_defaults
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
+
+
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle = paths.base_path;
+
+
+settings.data_dir           = [settings.base_path_castle,'preprocessing/channel_removal_all_channels/'];
+settings.save_dir           = [settings.base_path_castle,'preprocessing/channel_removal_all_channels/common_trimmed_average/'];
+
+
 settings.subjects            = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
 settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW','09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
-settings.data_dir           = [settings.base_path_castle,'preprocessing/channel_removal_all_channels/'];
-settings.trimaway           = 20;
-settings.save_dir           = [settings.base_path_castle,'preprocessing/channel_removal_all_channels/common_trimmed_average/'];
 settings.scalp_channels     = {'C3' 'C4'  'Cz' 'T3' 'T4' 'T5' 'T6' 'O1' 'O2' 'Oz' 'F3' 'F4' 'Fz' 'Cb1' 'Cb2'};
+
+settings.trimaway           = 20;
+
 
 for nuPPP = 1:size(settings.subject,1)
 

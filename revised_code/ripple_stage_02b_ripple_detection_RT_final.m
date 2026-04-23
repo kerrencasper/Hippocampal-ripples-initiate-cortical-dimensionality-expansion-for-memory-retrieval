@@ -9,13 +9,14 @@ ft_defaults
 
 
 %% path settings
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle = paths.base_path;
+settings.data_dir           = paths.data_dir;
+
 settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
 settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW', '09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
-
-settings.data_dir           = [settings.base_path_castle,'preprocessing/artifact_rejected_data/'];
-settings.save_dir           = [settings.base_path_castle,'output_data/ripple_detection/'];
 
 load("colour_scheme.mat")
 settings.colour_scheme = colour_scheme;
@@ -31,9 +32,11 @@ settings.smoothing  = .4;
 settings.zscore_task = 1;
 
 
+addpath(genpath([paths.MVPA_Light_master]))
 addpath(genpath([settings.base_path_castle,'ripple_project_publication_for_replication/main_analyses/Slythm']))
-addpath([settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions'])
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/plotting'))
+addpath([paths.subfunctions])
+addpath(genpath([paths.help_functions]))
+addpath(genpath([paths.plotting]))
 
 % for plotting
 settings.fs         = 1000;

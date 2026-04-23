@@ -8,24 +8,30 @@ ft_defaults
 % [~,ftpath]=ft_version;
 
 %% path settings
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
-settings.subjects            = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
-settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW','09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle = paths.base_path;
+settings.data_dir           = paths.data_dir;
 
 
-settings.data_dir           = [settings.base_path_castle,'preprocessing/artifact_rejected_data/'];
+
+
 settings.save_dir           = [settings.base_path_castle,'output_data/ripple_detection/'];
 
 load("colour_scheme.mat")
 settings.colour_scheme = colour_scheme;
+
+
+settings.subjects            = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
+settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW','09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
 
 settings.remove_falsepositives      = 1; % decide whether or not to exclude ripples deemed false positives based on spectral peak detection
 settings.full_enc_trial             = 1; % set to 0 if you want encoding trial to end with RT and to 1 if it should end at 3 sec
 settings.remove_ripple_duplicates   = 1;
 
 addpath(genpath([settings.base_path_castle,'ripple_project_publication_for_replication/main_analyses/Slythm']))
-addpath([settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions'])
+addpath([paths.subfunctions])
 
 % for plotting
 settings.fs                     = 1000;

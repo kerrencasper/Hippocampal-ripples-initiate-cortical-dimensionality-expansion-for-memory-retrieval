@@ -6,14 +6,22 @@ addpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_sc
 ft_defaults
 
 
-settings                    = [];
-settings.base_path          = '/Users/kerrenadmin/Desktop/Postdoc/Project_1/';
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
+paths = config_paths();
 
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/fieldtrip-20230422/external'))
-addpath([settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions'])
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/help_functions'))
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/plotting'))
+settings = [];
+settings.base_path_castle = paths.base_path;
+settings.data_dir           = paths.data_dir;
+settings.data_dir_channels  = paths.channels_dir;
+settings.anatomy_dir        = paths.anatomy_dir;
+settings.AAL_dir            = paths.AAL_dir;
+settings.SPM_dir            = paths.SPM_dir;
+
+addpath(genpath([paths.MVPA_Light_master]))
+addpath(genpath([settings.base_path_castle,'ripple_project_publication_for_replication/main_analyses/Slythm']))
+addpath([paths.subfunctions])
+addpath(genpath([paths.help_functions]))
+addpath(genpath([paths.plotting]))
+
 addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/toolbox'))
 settings.colour_scheme_1 = brewermap(30,'RdBu');
 settings.colour_scheme_1 = settings.colour_scheme_1;
@@ -758,7 +766,6 @@ set(gca,'FontSize',20)
 %% Dimensionality
 clear
 settings                    = [];
-settings.base_path          = '/Users/kerrenadmin/Desktop/Postdoc/Project_1/';
 settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
 
 addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/fieldtrip-20230422/external'))

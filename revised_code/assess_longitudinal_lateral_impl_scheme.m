@@ -13,16 +13,25 @@ clear
 restoredefaultpath
 addpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/fieldtrip-20230422')
 ft_defaults
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
+
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle   = paths.base_path;
+settings.data_dir           = paths.data_dir;
+settings.data_dir_channels  = paths.channels_dir;
+settings.anatomy_dir        = paths.anatomy_dir;
+settings.AAL_dir            = paths.AAL_dir;
+settings.SPM_dir            = paths.SPM_dir;
+
 settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
 settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW', '09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
 
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/MVPA-Light-master'))
+addpath(genpath([paths.MVPA_Light_master]))
 addpath(genpath([settings.base_path_castle,'ripple_project_publication_for_replication/main_analyses/Slythm']))
-addpath([settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions'])
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/help_functions'))
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/plotting'))
+addpath([paths.subfunctions])
+addpath(genpath([paths.help_functions]))
+addpath(genpath([paths.plotting]))
 addpath('/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/scripts_dimensionality/scripts_to_publish')
 
 
@@ -30,10 +39,6 @@ settings.colour_scheme_1 = brewermap(30,'RdBu');
 settings.colour_scheme_1 = settings.colour_scheme_1;
 
 settings.nu_perm = 4096;
-
-
-
-
 
 %% DECODING ripple-locked - fine
 

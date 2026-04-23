@@ -2,8 +2,11 @@ clear
 %% automatic artifact detection (artifacts will be removed when realigning the trials in step 02b and 02c)
 %                  Casper Kerren      [kerren@cbs.mpg.de]
 
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle = paths.base_path;
+
 settings.subject            = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
 settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW','09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
 settings.data_dir           = [settings.base_path_castle,'preprocessing/channel_removal_all_channels/common_trimmed_average/'];

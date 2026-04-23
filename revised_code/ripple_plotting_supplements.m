@@ -1,11 +1,6 @@
 %% plot supplemental material
-%                  Bernhard Staresina [bernhard.staresina@psy.ox.ac.uk]
+
 %                  Casper Kerren      [kerren@cbs.mpg.de]
-
-
-% Figure 5 - dimensionality with different sliding windows and
-% hippocampal contacts
-
 
 %%
 
@@ -16,18 +11,25 @@ addpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_sc
 ft_defaults
 [~,ftpath]=ft_version;
 
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle   = paths.base_path;
+settings.data_dir           = paths.data_dir;
+settings.data_dir_channels  = paths.channels_dir;
+settings.anatomy_dir        = paths.anatomy_dir;
+settings.AAL_dir            = paths.AAL_dir;
+settings.SPM_dir            = paths.SPM_dir;
+
 settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
 settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW', '09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
 
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/MVPA-Light-master'))
+addpath(genpath([paths.MVPA_Light_master]))
 addpath(genpath([settings.base_path_castle,'ripple_project_publication_for_replication/main_analyses/Slythm']))
-addpath([settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions'])
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/help_functions'))
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/plotting'))
+addpath([paths.subfunctions])
+addpath(genpath([paths.help_functions]))
+addpath(genpath([paths.plotting]))
 
-settings.data_dir = [settings.base_path_castle,'/output_data/coherence'];
 settings.data_dir_channels  = [settings.base_path_castle,'ripple_project_publication_for_replication/templates'];
 settings.scalp_channels     = {'C3' 'C4'  'Cz' 'T3' 'T4' 'T5' 'T6' 'O1' 'O2' 'Oz' 'F3' 'F4' 'Fz' 'Cb1' 'Cb2'};
 
@@ -1540,32 +1542,30 @@ close all
 
 % path settings
 
-settings                    = [];
-settings.base_path_castle   = '/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/'; % '/castles/nr/projects/w/wimberm-ieeg-compute/';
-settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
-settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW', '09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
-addpath('/Users/kerrenadmin/Desktop/Other_projects/Dimensionality_ripples_Casper_and_Bernhard/scripts_dimensionality/scripts_to_publish')
+paths = config_paths();
+
+settings = [];
+settings.base_path_castle = paths.base_path;
+settings.data_dir           = paths.data_dir;
+settings.data_dir_channels  = paths.channels_dir;
+settings.anatomy_dir        = paths.anatomy_dir;
+settings.AAL_dir            = paths.AAL_dir;
+settings.SPM_dir            = paths.SPM_dir;
 
 load("colour_scheme.mat")
 settings.colour_scheme = colour_scheme;
 
-settings.data_dir           = [settings.base_path_castle,'preprocessing/artifact_rejected_data/'];
-
-settings.save_dir           = [settings.base_path_castle,'output_data/decoding/'];
-settings.data_dir_channels  = [settings.base_path_castle,'ripple_project_publication_for_replication/templates'];
-settings.anatomy_dir        = [settings.base_path_castle,'ripple_project_publication_for_replication/additional_analyses/visualisation/'];
-settings.AAL_dir            = fullfile(settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions/AAL3');
-settings.SPM_dir            = fullfile(settings.base_path_castle,'/ripple_project_publication_for_replication/subfunctions/spm12');
-
 settings.scalp_channels     = {'C3' 'C4'  'Cz' 'T3' 'T4' 'T5' 'T6' 'O1' 'O2' 'Oz' 'F3' 'F4' 'Fz' 'Cb1' 'Cb2'};
+settings.subjects           = char('CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK');
+settings.SubjectIDs         = char('01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW', '09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK');
 subjects                    = {'CF', 'JM', 'SO', 'AH','FC', 'HW', 'AM', 'MH','FS', 'AS', 'CB', 'KK'};
 SubjectIDs                  = {'01_CF', '02_JM', '03_SO', '06_AH','07_FC', '08_HW', '09_AM', '10_MH','11_FS', '12_AS', '13_CB', '14_KK'};
 
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/MVPA-Light-master'))
+addpath(genpath([paths.MVPA_Light_master]))
 addpath(genpath([settings.base_path_castle,'ripple_project_publication_for_replication/main_analyses/Slythm']))
-addpath([settings.base_path_castle,'ripple_project_publication_for_replication/subfunctions'])
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/help_functions'))
-addpath(genpath('/Users/kerrenadmin/Desktop/Postdoc/Project_1/Analyses_matlab/general_scripts_matlab/plotting'))
+addpath([paths.subfunctions])
+addpath(genpath([paths.help_functions]))
+addpath(genpath([paths.plotting]))
 
 % ripple settings
 
